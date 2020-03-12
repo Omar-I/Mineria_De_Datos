@@ -159,3 +159,165 @@ if(any(x < 0)) cat("En x hay números negativos\n") # Si algún números de x es
 RESULTADO:
   ## En x hay números negativos
   
+  
+  
+  
+  ##continuacion de funciones de R
+  
+  
+  Funcion 11:
+  contar_vocales <- function(frase) 
+  {
+    cantidad_vocales <- 0 
+    frase <- tolower(frase)
+    frase <- strsplit(frase, "")[[1]]
+    
+    for (i in frase)
+    {
+      if (i %in% c("a", "e", "i", "o", "u"))
+      {
+        cantidad_vocales <- cantidad_vocales + 1
+      } 
+    }
+    cantidad_vocales 
+  }
+
+resultado <- contar_vocales("Hola mundo, nuevamente")
+resultado
+
+
+
+
+Creando un data frame y mandando llamar a la funcion fn.show
+Función 12:
+  datos <- data.frame(nombres = c("Oscar", "Paty", "Lulu"), edades = c(20,34,56))
+datos
+Resultado:
+  ##   nombres edades
+  ## 1   Oscar     20
+  ## 2    Paty     34
+  ## 3    Lulu     56
+  Crear una función que recibe un vector numérico y muestra valores media, mas alto y bajo de un vector así como devolver el vector ordenado.
+Función 13:
+  fnshow.datos.vector  <- function (argmivector, argmodo ) {
+    print("Datos del vector. Media, Máximo, mínimo y ordenado")
+    print(paste("Media: ",round(mean(argmivector),2)))
+    print(paste("Máximo: ",max(argmivector)))
+    print(paste("Mínimo: ",min(argmivector)))
+    if (argmodo == 'A') {
+      print(sort(argmivector, decreasing = FALSE)) # menor a mayor
+    } else {
+      print(sort(argmivector, decreasing = TRUE)) # mayor a menor
+    }
+  } #
+Resultado:
+  ## [1] "Datos del vector. Media, Máximo, mínimo y ordenado"
+  ## [1] "Media:  4.5"
+  ## [1] "Máximo:  6"
+  ## [1] "Mínimo:  3"
+  ## [1] 3 4 5 6
+  
+  Función 14:
+  asignar valores por defecto (default value) a las variables en la declaración de las funciones. Por ejemplo:
+  f <- function(x = NULL, y = NULL)
+  {
+    if (!is.null(x) & !is.null(y)){
+      print(x+y)
+    }else{
+      print('faltan valores')
+    }
+  }
+
+f(x = 2, y = 0)
+2
+f(x = 2)
+"faltan valores"
+f(y = 0)
+"faltan valores"
+
+Funcion 15:
+  tiene la capacidad de capturar todos los valores pasados a la función que no coinciden con ningún argumento. De este modo, podemos pasar a una función una cantidad no prefijada de valores.
+sumar_pares <- function(...)
+{
+  valores <- c(...)
+  if(!is.numeric(valores)) return('NaN')
+  
+  contador <- 0
+  for(n in valores){
+    if(n%%2 == 0){
+      contador <- contador + n
+    }
+  }
+  contador
+}
+
+sumar_pares(1:10)
+30
+
+
+
+Funcion 16:
+  En R, es posible revisar el contenido del ambiente de una función, e incluso encontrar el valor asociado a un símbolo determinado en esos ambientes. Para ello se usan las funciones environment(), ls() y get(), como se muestra a continuación. 
+ls( environment(duplica) ) 
+## [1] "fff" "n" get( "n"
+, environment(duplica) ) 
+## [1] 2 ls( environment(triplica) )
+## [1] "fff" "n" 
+get( "n", environment(triplica) )
+## [1] 3 
+
+Funcion 17:
+  Para empezar, supóngase que se tiene un data frame, exclusivamente de columnas numéricas y se quiere conocer el promedio de cada una de estas columnas. En este caso, la función sapply() permite aplicar una operación o una función a cada uno de los elementos la lista o data frame, dado como argumento. Así, la operación deseada se obtiene de la siguiente manera.
+(misDatos <- data.frame(uno = runif(5, 10.5, 40.3), dos = runif(5), 
+                        tres = runif(5, 155, 890))) 
+## uno dos tres ## 1 17.66 0.7023 433.0 
+## 2 33.04 0.8633 875.6
+## 3 38.24 0.9655 283.5 
+## 4 27.80 0.1671 156.1 
+## 5 11.53 0.2866 464.6 sapply(misDatos, haz_promedio, simplify = TRUE) 
+## uno dos tres 
+## 25.652 0.597 442.572 
+# aquí se podría haber usado la función 'mean' en vez de 
+# 'haz_promedio' 
+
+Funcion 18:
+  Las funciones rbind() y cbind(), son otras que se pueden utilizar para construir matrices, dando, ya sea los renglones individuales o las columnas individuales, respectivamente.
+m1 <- rbind(c(1.5, 3.2, -5.5), c(0, -1.1, 60)) m1
+## [,1] [,2] [,3] 
+## [1,] 1.5 3.2 -5.5
+## [2,] 0.0 -1.1 60.0 class(m1[1, ])
+# ahora compuesta de números reales
+## [1] "numeric" (m2 <- cbind(c(1.5, 3.2, -5.5), c(0, -1.1, 60))) 
+## [,1] [,2] 
+## [1,] 1.5 0.0 
+## [2,] 3.2 -1.1 
+## [3,] -5.5 60.0
+
+
+
+Función 19:
+  Una vez definida una función, hay dos funciones de R que permiten revisar su lista de argumentos formales, a saber: args() y formals(). En el siguiente código se ve el comportamiento de cada una de ellas. 
+args(MiFunc.v2) 
+## function (x, yyy, z = 5, t) 
+## NULL (ar <- formals("MiFunc.v2"))
+# puede o no llevar comillas
+## $x 
+##
+## 
+## $yyy ## ## ## $z 
+## [1] 5 
+## 
+## $t 
+# Si se quiere revisar el argumento z, se hace así: ar$z 
+## [1] 5 
+
+
+Función 20:
+  En programación este concepto se implementa mediante una técnica conocida como recursividad (Dijkstra [1960]), la que, en términos sencillos, se puede ver como la posibilidad de una función de llamarse o invocarse a sí misma. Para el caso del factorial, en R, esta función se puede programar de la siguiente manera:
+  MiFact <- function(n) { 
+    if (n==0) return (1) # salida inmediata 
+    if (n > 0) return (n*MiFact(n-1)) return (NULL) 
+    # caso fallido } 
+    # Ahora se usa la función con 5 y 8
+    MiFact(5)
+    
