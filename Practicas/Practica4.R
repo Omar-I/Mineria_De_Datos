@@ -78,3 +78,34 @@ rm(KobeBryant_FTA, JoeJohnson_FTA, CarmeloAnthony_FTA, DwightHoward_FTA, ChrisBo
 colnames(FreeThrowAttempts) <- Seasons
 #Rename the rows
 rownames(FreeThrowAttempts) <- Players
+
+#continuacion de la practica 4
+#Check the matrix
+FreeThrowAttempts
+
+#Re-create the plotting function
+myplot <- function(z, who=1:10) {
+  matplot(t(z[who,,drop=F]), type="b", pch=15:18, col=c(1:4,6), main="Basketball Players Analysis")
+  legend("bottomleft", inset=0.01, legend=Players[who], col=c(1:4,6), pch=15:18, horiz=F)
+}
+
+
+#Visualize the new matrices
+myplot(FreeThrows)
+myplot(FreeThrowAttempts)
+
+#Part 1 - Free Throw Attempts Per Game
+myplot(FreeThrowAttempts/Games)
+
+
+#Part 2 - Free Throw Accuracy
+myplot(FreeThrows/ FreeThrowAttempts)
+
+
+#Field Goal Accuracy was exceptional:
+myplot(FieldGoals/FieldGoalAttempts)
+
+
+#Part 3 - Player Style Patterns Excluding Free Throws
+myplot((Points-FieldGoals)/FreeThrows)
+
