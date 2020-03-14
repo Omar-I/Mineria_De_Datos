@@ -295,7 +295,7 @@ m1 <- rbind(c(1.5, 3.2, -5.5), c(0, -1.1, 60)) m1
 
 
 
-Función 19:
+#Función 19:
   Una vez definida una función, hay dos funciones de R que permiten revisar su lista de argumentos formales, a saber: args() y formals(). En el siguiente código se ve el comportamiento de cada una de ellas. 
 args(MiFunc.v2) 
 ## function (x, yyy, z = 5, t) 
