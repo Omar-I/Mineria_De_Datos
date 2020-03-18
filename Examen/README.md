@@ -51,3 +51,53 @@ head(mydf)#we use it to view the first 6 data of our dataframe
 `````` R
 merged <- merge(stats, mydf, by.x = "Country.Code", by.y = "Country")
 ``````
+
+### We merged merged with the years that we had filtered
+`````` R
+merged1960 <- merge(data1960, mydf, by.x = "Country.Code", by.y = "Country")
+merged1960
+
+merged2013 <- merge(data2013, mydf, by.x = "Country.Code", by.y = "Country")
+merged2013
+``````
+---
+### shows the first 6 values that were made in the union
+`````` R
+head(merged)
+``````
+---
+### Shows the last rows that were made in the union
+`````` R
+tail(merged)
+#dataframe summary
+summary(mydf)
+``````
+---
+
+### apply the ggplot library to make our plot
+`````` R
+library(ggplot2)
+``````
+---
+### Plot showing 1960 data
+`````` R
+   qplot(data = merged1960 , x = Fertility.Rate, y = Life1960,
+         color = Region, size=I(5), shape=I(18), alpha =I(.5),
+         main = "Tasa Fertilidad ")
+     
+``````
+---
+## Plot showing 2013 data
+
+`````` R
+qplot(data = merged2013, x = Fertility.Rate, y = life2013,
+      color = Region, size=I(5), shape=I(18), alpha =I(.4),
+      main = "Tasa Fertilidad ")
+     
+``````
+---
+
+# Analysis
+We can compare that between the period of 1960 and 2013 we compared the two years, it can be said that Europe has a high rate of life expectancy in the year 1960 and a low fertility range compared to others such as the country of Africa. , which has a low life expectancy rate and a very high fertile range.
+
+In 2013, Europe in some regions had a low rate of life expectancy and in other countries it had a considerable increase
