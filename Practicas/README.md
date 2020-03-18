@@ -1,10 +1,10 @@
 # Mineria_De_Datos
-
-INGENIERÍA INFORMÁTICA
+INGENIERIA INFORMATICA
 UNIDAD 1
 Alumnos:
 16210791 Quintero Renteria Omar Israel
 16210790 Pacheco Ramirez Hugo Andres
+
 
 ## INDICE
 
